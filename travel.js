@@ -6,6 +6,7 @@ let context;
 
 let snakeX = blockSize * 5;
 let snakeY = blockSize * 5;
+let score = 0;
 
 // Set the total number of rows and columns
 let speedX = 0;  //speed of snake in x coordinate.
@@ -47,6 +48,8 @@ function update() {
     if (snakeX == foodX && snakeY == foodY) {
         snakeBody.push([foodX, foodY]);
         placeFood();
+        score++;
+        
     }
 
     // body of snake will grow
@@ -56,7 +59,11 @@ function update() {
     }
     if (snakeBody.length) {
         snakeBody[0] = [snakeX, snakeY];
+        
+        
     }
+    
+    drawScore();
 
     context.fillStyle = "white";
     snakeX += speedX * blockSize; //updating Snake position in X coordinate.
@@ -123,4 +130,11 @@ function placeFood() {
     
     //in y coordinates.
     foodY = Math.floor(Math.random() * total_row) * blockSize; 
+}
+
+function drawScore(){
+    context.font = "16px Arial";
+    context.fillStyle = "black";
+    context.fillText(`Score: ${score}`, 8, 20);
+
 }
