@@ -8,19 +8,20 @@ body {
 }
 
 body {
-  background-color: white
+  background-color: white;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 .orange{
-    color:#f4a100
+    color:#f4a100;
 }
 
 .dblue{
-    color:#439aff
+    color:#439aff;
 }
 
 .lblue{
-    color:#353f52
+    color:#353f52;
 }
 
 h2 {
