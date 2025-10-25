@@ -1,8 +1,16 @@
 body {
-    background-color: aquamarine;
+  background-color: white
 }
-.freetobook {
-    font-size: 40px;
-    font-weight: bold;
-    color:cornsilk;
+
+.orange{
+    color:#f4a100
 }
+
+.dblue{
+    color:#439aff
+}
+
+.lblue{
+    color:#353f52
+}
+
