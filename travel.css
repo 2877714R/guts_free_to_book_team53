@@ -1,16 +1,8 @@
 body {
-  background-color: white
+    text-align: center;
 }
-
-.orange{
-    color:#f4a100
+.geeks {
+    font-size: 40px;
+    font-weight: bold;
+    color: green;
 }
-
-.dblue{
-    color:#439aff
-}
-
-.lblue{
-    color:#353f52
-}
-
