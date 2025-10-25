@@ -1,6 +1,6 @@
-let blockSize = 25;
-let total_row = 17; //total row number
-let total_col = 17; //total column number
+let blockSize = 40;
+let total_row = 10; //total row number
+let total_col = 10; //total column number
 let board;
 let context;
 
@@ -28,7 +28,7 @@ window.onload = function () {
     placeFood();
     document.addEventListener("keyup", changeDirection);  //for movements
     // Set snake speed
-    setInterval(update, 1000 / 10);
+    setInterval(update, 1000 / 5);
 }
 
 function update() {
