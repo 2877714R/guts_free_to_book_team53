@@ -2,6 +2,7 @@ let blockSize = 40;
 let total_row = 10; //total row number
 let total_col = 10; //total column number
 let board;
+let board2;
 let context;
 
 let snakeX = blockSize * 5;
@@ -31,6 +32,15 @@ window.onload = function () {
     setInterval(update, 1000 / 5);
 }
 
+var train_conductor_image = new Image();
+train_conductor_image.src = 'images/train_conductor.png';
+
+var train_carriage_image = new Image();
+train_carriage_image.src = 'images/train_carraige.png';
+
+// var people_image = new Image(1,1);
+// people_image.src = 'images/people.png';
+
 function update() {
     if (gameOver) {
         return;
@@ -41,24 +51,34 @@ function update() {
     context.fillRect(0, 0, board.width, board.height);
 
     // Set food color and position
-    context.fillStyle = "#f4a100";
+    context.fillStyle = "yellow";
     context.fillRect(foodX, foodY, blockSize, blockSize);
-
+    
     if (snakeX == foodX && snakeY == foodY) {
         snakeBody.push([foodX, foodY]);
         placeFood();
     }
 
+
+    context.drawImage(train_conductor_image, snakeX, snakeY);
+
     // body of snake will grow
     for (let i = snakeBody.length - 1; i > 0; i--) {
         // it will store previous part of snake to the current part
+        // context.drawImage(train_carriage_image, snakeX, snakeY);
         snakeBody[i] = snakeBody[i - 1];
     }
+
+
+    for (let i = 0; i <= snakeBody.length; i++) {
+        snakeBody[i] = snakeBody[i+1] 
+    }
+
     if (snakeBody.length) {
         snakeBody[0] = [snakeX, snakeY];
     }
 
-    context.fillStyle = "white";
+
     snakeX += speedX * blockSize; //updating Snake position in X coordinate.
     snakeY += speedY * blockSize;  //updating Snake position in Y coordinate.
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
@@ -74,7 +94,6 @@ function update() {
         // Out of bound condition
         gameOver = true;
         alert("Game Over");
-        location.reload();
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
@@ -83,12 +102,9 @@ function update() {
             // Snake eats own body
             gameOver = true;
             alert("Game Over");
-            location.reload();
-      
         }
     }
 }
-
 
 // Movement of the Snake - We are using addEventListener
 function changeDirection(e) {
