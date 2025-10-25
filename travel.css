@@ -1,4 +1,13 @@
 body {
+    text-align: center;
+}
+.geeks {
+    font-size: 40px;
+    font-weight: bold;
+    color: green;
+}
+
+body {
   background-color: white
 }
 
@@ -13,4 +22,3 @@ body {
 .lblue{
     color:#353f52
 }
-

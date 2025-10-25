@@ -1,20 +1,20 @@
-let blockSize = 25;
-let total_row = 17; //total row number
-let total_col = 17; //total column number
+let blockSize = 40;
+let total_row = 10; //total row number
+let total_col = 10; //total column number
 let board;
 let context;
 
-let vehicleX = blockSize * 5;
-let vehicleY = blockSize * 5;
+let snakeX = blockSize * 5;
+let snakeY = blockSize * 5;
 
 // Set the total number of rows and columns
-let speedX = 0;  //speed of vehicle in x coordinate.
-let speedY = 0;  //speed of vehicle in Y coordinate.
+let speedX = 0;  //speed of snake in x coordinate.
+let speedY = 0;  //speed of snake in Y coordinate.
 
-let vehicleBody = [];
+let snakeBody = [];
 
-let personX;
-let personY;
+let foodX;
+let foodY;
 
 let gameOver = false;
 
@@ -25,10 +25,10 @@ window.onload = function () {
     board.width = total_col * blockSize;
     context = board.getContext("2d");
 
-    placePerson();
+    placeFood();
     document.addEventListener("keyup", changeDirection);  //for movements
-    // Set vehicle speed
-    setInterval(update, 10000 / 100);
+    // Set snake speed
+    setInterval(update, 1000 / 5);
 }
 
 function update() {
@@ -37,47 +37,47 @@ function update() {
     }
 
     // Background of a Game
-    context.fillStyle = "#353f52";
+    context.fillStyle = "green";
     context.fillRect(0, 0, board.width, board.height);
 
     // Set food color and position
-    context.fillStyle = "#f4a100";
-    context.fillRect(personX, personY, blockSize, blockSize);
+    context.fillStyle = "yellow";
+    context.fillRect(foodX, foodY, blockSize, blockSize);
 
-    if (vehicleX == personX && vehicleY == personY) {
-        vehicleBody.push([personX, personY]);
-        placePerson();
+    if (snakeX == foodX && snakeY == foodY) {
+        snakeBody.push([foodX, foodY]);
+        placeFood();
     }
 
-    // body of vehicle will grow
-    for (let i = vehicleBody.length - 1; i > 0; i--) {
+    // body of snake will grow
+    for (let i = snakeBody.length - 1; i > 0; i--) {
         // it will store previous part of snake to the current part
-        vehicleBody[i] = snakeBody[i - 1];
+        snakeBody[i] = snakeBody[i - 1];
     }
-    if (vehicleBody.length) {
-        vehicleBody[0] = [vehicleX, vehicleY];
+    if (snakeBody.length) {
+        snakeBody[0] = [snakeX, snakeY];
     }
 
     context.fillStyle = "white";
-    vehicleX += speedX * blockSize; //updating Snake position in X coordinate.
-    vehicleY += speedY * blockSize;  //updating Snake position in Y coordinate.
-    context.fillRect(vehicleX, vehicleY, blockSize, blockSize);
-    for (let i = 0; i < vehicleBody.length; i++) {
-        context.fillRect(vehicleBody[i][0], vehicleBody[i][1], blockSize, blockSize);
+    snakeX += speedX * blockSize; //updating Snake position in X coordinate.
+    snakeY += speedY * blockSize;  //updating Snake position in Y coordinate.
+    context.fillRect(snakeX, snakeY, blockSize, blockSize);
+    for (let i = 0; i < snakeBody.length; i++) {
+        context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
 
-    if (vehicleX < 0 
-        || vehicleX > total_col * blockSize 
-        || vehicleY < 0 
-        || vehicleY > total_row * blockSize) { 
+    if (snakeX < 0 
+        || snakeX > total_col * blockSize 
+        || snakeY < 0 
+        || snakeY > total_row * blockSize) { 
         
         // Out of bound condition
         gameOver = true;
         alert("Game Over");
     }
 
-    for (let i = 0; i < vehicleBody.length; i++) {
-        if (vehicleX == vehicleBody[i][0] && vehicleY == vehicleBody[i][1]) { 
+    for (let i = 0; i < snakeBody.length; i++) {
+        if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) { 
             
             // Snake eats own body
             gameOver = true;
@@ -112,11 +112,11 @@ function changeDirection(e) {
 }
 
 // Randomly place food
-function placePerson() {
+function placeFood() {
 
     // in x coordinates.
-    personX = Math.floor(Math.random() * total_col) * blockSize; 
+    foodX = Math.floor(Math.random() * total_col) * blockSize; 
     
     //in y coordinates.
-    personY = Math.floor(Math.random() * total_row) * blockSize; 
+    foodY = Math.floor(Math.random() * total_row) * blockSize; 
 }
