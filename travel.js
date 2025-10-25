@@ -41,7 +41,7 @@ function update() {
     context.fillRect(0, 0, board.width, board.height);
 
     // Set food color and position
-    context.fillStyle = "yellow";
+    context.fillStyle = "#f4a100";
     context.fillRect(foodX, foodY, blockSize, blockSize);
 
     if (snakeX == foodX && snakeY == foodY) {
@@ -74,6 +74,7 @@ function update() {
         // Out of bound condition
         gameOver = true;
         alert("Game Over");
+        location.reload();
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
@@ -82,9 +83,12 @@ function update() {
             // Snake eats own body
             gameOver = true;
             alert("Game Over");
+            location.reload();
+      
         }
     }
 }
+
 
 // Movement of the Snake - We are using addEventListener
 function changeDirection(e) {
