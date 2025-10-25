@@ -5,6 +5,6 @@ Create an small browser-based game that works offline that can be shown to users
 - Lightweight and quick to load
 - Capable of running offline
 - Easy to understand (simple controls, minimal instructions needed)
-- Create and fun
+- Creative and fun
 
 
