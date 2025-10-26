@@ -57,8 +57,7 @@ function update() {
     
     // Set food color and position
     //context.fillStyle = "yellow";
-    //context.fillRect(foodX, foodY, blockSize, blockSize);
-    context.drawImage(small_person_image, foodX, foodY, blockSize, blockSize)
+    context.drawImage(small_person_image, foodX, foodY, blockSize, blockSize);
 
     // context.drawImage(small_person_image, foodX, foodY);    
     
@@ -91,13 +90,10 @@ function update() {
 
     snakeX += speedX * blockSize; //updating Snake position in X coordinate.
     snakeY += speedY * blockSize;  //updating Snake position in Y coordinate.
-    context.drawImage(train_conductor_image, snakeX, snakeY);
+    context.drawImage(train_conductor_image, snakeX, snakeY, blockSize-10, blockSize-10);
     for (let i = 0; i < snakeBody.length; i++) {
-        //context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
-        context.drawImage(train_carriage_image, snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+        context.drawImage(train_carriage_image, snakeBody[i][0], snakeBody[i][1], blockSize-10, blockSize-10);
     }
-
-    
 
     if (snakeX < 0 
         || snakeX > total_col * blockSize 
@@ -157,6 +153,7 @@ function placeFood() {
     foodY = Math.floor(Math.random() * total_row) * blockSize; 
 
     context.drawImage(small_person_image, foodX, foodY, blockSize, blockSize);
+
 }
 
 function drawScore(){
