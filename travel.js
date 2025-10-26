@@ -40,7 +40,7 @@ var train_carriage_image = new Image();
 train_carriage_image.src = 'images/train_carriage.png';
 
 var small_person_image = new Image();
-small_person_image.src = 'images/person_small.png';
+small_person_image.src = 'images/person.png';
 
 // var people_image = new Image(1,1);
 // people_image.src = 'images/people.png';
@@ -56,8 +56,9 @@ function update() {
 
     
     // Set food color and position
-    context.fillStyle = "yellow";
-    context.fillRect(foodX, foodY, blockSize, blockSize);
+    //context.fillStyle = "yellow";
+    //context.fillRect(foodX, foodY, blockSize, blockSize);
+    context.drawImage(small_person_image, foodX, foodY, blockSize, blockSize)
 
     // context.drawImage(small_person_image, foodX, foodY);    
     
@@ -154,6 +155,8 @@ function placeFood() {
     
     //in y coordinates.
     foodY = Math.floor(Math.random() * total_row) * blockSize; 
+
+    context.drawImage(small_person_image, foodX, foodY, blockSize, blockSize);
 }
 
 function drawScore(){
