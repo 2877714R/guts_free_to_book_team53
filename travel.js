@@ -37,7 +37,7 @@ var train_conductor_image = new Image();
 train_conductor_image.src = 'images/train_conductor.png';
 
 var train_carriage_image = new Image();
-train_carriage_image.src = 'images/train_carraige.png';
+train_carriage_image.src = 'images/train_carriage.png';
 
 var small_person_image = new Image();
 small_person_image.src = 'images/person_small.png';
@@ -92,8 +92,11 @@ function update() {
     snakeY += speedY * blockSize;  //updating Snake position in Y coordinate.
     context.drawImage(train_conductor_image, snakeX, snakeY);
     for (let i = 0; i < snakeBody.length; i++) {
-        context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+        //context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+        context.drawImage(train_carriage_image, snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
+
+    
 
     if (snakeX < 0 
         || snakeX > total_col * blockSize 
