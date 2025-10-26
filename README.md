@@ -7,4 +7,4 @@ Create an small browser-based game that works offline that can be shown to users
 - Easy to understand (simple controls, minimal instructions needed)
 - Creative and fun
 
-
+Our game is a snake-based game where a train carriage collects passengers. Users can see their score and the game also restarts when they fail.
