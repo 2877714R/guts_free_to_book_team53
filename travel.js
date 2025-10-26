@@ -103,6 +103,8 @@ function update() {
         // Out of bound condition
         gameOver = true;
         alert("Game Over");
+        location.reload();
+
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
@@ -111,6 +113,7 @@ function update() {
             // Snake eats own body
             gameOver = true;
             alert("Game Over");
+            location.reload();
         }
     }
 }
@@ -154,6 +157,5 @@ function drawScore(){
     context.font = "16px Arial";
     context.fillStyle = "black";
     context.fillText(`Score: ${score}`, 8, 20);
-
 }
 
